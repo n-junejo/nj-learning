@@ -1,15 +1,6 @@
 name: 'Terraform'
 
 on:
-  workflow_dispatch:
-    inputs:
-      terraform_action:
-        type: choice
-        description: select terraform action
-        options:
-        - apply
-        - destroy
-        required: true
   push:
     branches: [ "main" ]
 
@@ -37,16 +28,7 @@ jobs:
         tf_actions_subcommand: 'init'
         tf_actions_working_dir: '.'
         tf_actions_comment: true
-   #     args: '-var="instance_type=t2.medium"'
-    
-    - name: Terraform plan
-      uses: hashicorp/terraform-github-actions@master
-      with:
-        tf_actions_version: 0.14.3
-        tf_actions_subcommand: 'plan'
-        tf_actions_working_dir: '.'
-        tf_actions_comment: true
-   #     args: '-var="instance_type=t2.medium"'
+     
       
           
     - name: Terraform destroy
